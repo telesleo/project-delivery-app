@@ -1,0 +1,25 @@
+table {
+  border-collapse: collapse;
+}
+
+th {
+  color: var(--color4);
+}
+
+.td-item {
+  font-weight: 700;
+}
+
+.tr-border {
+  border-bottom: 1px var(--color3) solid;
+}
+
+th, td {
+  padding: 10px;
+}
+
+td button {
+  margin: 0;
+  padding: 5px;
+  width: 28px;
+}

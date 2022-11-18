@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import Button from '../components/button';
 import ProductList from '../components/productList';
 import Header from '../components/header';
+import getOrderById from '../utils/getOrderById';
 import getFormattedDate from '../utils/getFormattedDate';
 import changeOrderStatus from '../utils/changeOrderStatus';
-import getOrderById from '../utils/getOrderById';
+import './OrderDetails.css';
 
 export default function OrderDetails() {
   const { id } = useParams();
@@ -33,29 +34,47 @@ export default function OrderDetails() {
       <Header />
       {
         order && (
-          <div>
-            { }
-            <h3
-              data-testid={ datatestId + itemId }
-            >
-              { order.id }
-            </h3>
-            <h3
-              data-testid={ datatestId + sellerId }
-            >
-              {`${order.seller.name}`}
-            </h3>
-            <h3
-              data-testid={ datatestId + dateId }
-            >
-              { getFormattedDate(order.saleDate) }
-            </h3>
-            <h3
-              data-testid={ datatestId + statusId + order.id }
-            >
-              { order.status }
-            </h3>
+          <div className="vertical-container">
+            <h1 className="title">
+              {'Pedido '}
+              <span data-testid={ datatestId + itemId }>{ order.id }</span>
+            </h1>
+            <div className="vertical-container">
+              <h3 className="order-details-item">
+                { 'P. Vendedora: ' }
+                <span
+                  data-testid={ datatestId + sellerId }
+                >
+                  {`${order.seller.name}`}
+                </span>
+              </h3>
+              <h3 className="order-details-item">
+                {'Data: '}
+                <span
+                  data-testid={ datatestId + dateId }
+                >
+                  {getFormattedDate(order.saleDate)}
+                </span>
+              </h3>
+              <h3 className="order-details-item">
+                { 'Status: ' }
+                <span
+                  data-testid={ datatestId + statusId + order.id }
+                >
+                  {order.status}
+                </span>
+              </h3>
+            </div>
+            <h2 className="order-details-price">
+              {'R$ '}
+              <span
+                data-testid={ datatestId + totalPriceId }
+              >
+                {order.totalPrice.replace('.', ',')}
+              </span>
+            </h2>
             <Button
+              classes="order-details-button"
               dataTestId={ datatestId + checkId }
               name="MARCAR COMO ENTREGUE"
               disabled={ order.status !== 'Em Trânsito' }
@@ -65,11 +84,6 @@ export default function OrderDetails() {
               } }
               type="button"
             />
-            <h2
-              data-testid={ datatestId + totalPriceId }
-            >
-              { order.totalPrice.replace('.', ',') }
-            </h2>
 
             <ProductList
               datatestId={ datatestId }

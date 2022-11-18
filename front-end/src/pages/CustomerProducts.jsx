@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/header';
 import ProductCards from '../components/productCards';
 import { getProducts } from '../utils/requests';
+import './CustomerProducts.css';
 
 export default function CustomerProducts() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState('0,00');
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -48,20 +49,23 @@ export default function CustomerProducts() {
   return (
     <div>
       <Header />
-      {
-        products?.map((product, index) => (
-          <ProductCards
-            key={ index }
-            product={ product }
-            handleOrders={ handleOrders }
-          />
-        ))
-      }
+      <div className="products">
+        {
+          products?.map((product, index) => (
+            <ProductCards
+              key={ index }
+              product={ product }
+              handleOrders={ handleOrders }
+            />
+          ))
+        }
+      </div>
       <button
+        className={ `button-cart ${(totalPrice === '0,00') && 'hidden'}` }
         type="button"
         data-testid="customer_products__button-cart"
         onClick={ () => navigate('/customer/checkout') }
-        disabled={ totalPrice === 0 }
+        disabled={ totalPrice === '0,00' }
       >
         Finalizar Pedido - R$
         <span data-testid="customer_products__checkout-bottom-value">

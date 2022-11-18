@@ -1,54 +1,134 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: var(--color2);
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.title {
+  margin: 40px 0;
+}
+
+hr {
+  height: 20px;
+}
+
+.align-start {
+  text-align: start;
+}
+
+button {
+  background-color: var(--color4);
+  padding: 10px 16px;
+  margin: 10px 10px;
+  color: var(--color1);
+  font-weight: 500;
+  border-radius: var(--border-radius1);
+  font-size: 17px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: var(--color3);
+  cursor: default;
+}
+
+.white-button {
+  background-color: var(--color1);
+  color: var(--color4);
+  text-decoration: underline;
+}
+
+.text-button {
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--color2);
+}
+
+.large-button {
+  width: 260px;
+}
+
+input, select {
+  background-color: var(--color1);
+  padding: 8px 10px;
+  margin: 3px;
+  color: var(--color2);
+  border: 1px var(--color3) solid;
+  border-radius: var(--border-radius1);
+  font-size: 16px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.large-input {
+  min-width: 400px;
+}
+
+input::placeholder {
+  color: var(--color3)
+}
+
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  background: #0fa36b;
-  color: #464646;
+}
+
+.vertical-container {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
-  height: 100vh;
-  justify-content: center;
-  width: 100%;
+  align-items: center;
 }
 
-.App > .logo {
-  animation: shake 1.5s infinite ease;
-  color: aliceblue;
-  font-family: Montserrat , sans-serif;
-  font-size: 3em;
-  font-weight: 900;
+.login-register-container {
+  margin: 60px 20px;
 }
 
-.rocksGlass {
-  animation: shake 1s infinite ease;
-  max-height: 80vh;
+.login-register-container label {
+  margin: 6px 0;
 }
 
-@keyframes shake {
-
-  0% {
-    transform: rotate(5deg);
-  }
-
-  50% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(5deg);
-  }
+.hr-vertical {
+  border-right: 1px var(--color3) solid;
+  width: 0;
 }
 
-@keyframes clink {
+.hidden {
+  display: none;
+}
 
-  0% {
-    transform: rotate(-10deg);
-  }
+a {
+  text-decoration: none;
+}
 
-  50% {
-    transform: rotate(20deg);
-  }
+.subtitle {
+  margin: 30px 0;
+}
 
-  100% {
-    transform: rotate(-10deg);
-  }
+.error-message {
+  margin: 10px;
 }
